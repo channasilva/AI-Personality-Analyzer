@@ -2,6 +2,43 @@
 
 This repository contains a high-accuracy machine learning model for predicting whether a person is an Introvert or Extrovert based on their social behavior and personality traits.
 
+## 🌐 **Web Application**
+
+### **Live Demo**
+**🎯 App Opening Link:** http://localhost:5000
+
+### **How to Run the Web App**
+
+1. **Install dependencies:**
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+2. **Start the Flask server:**
+   ```bash
+   python app.py
+   ```
+
+3. **Open your browser and go to:**
+   ```
+   http://localhost:5000
+   ```
+
+### **Web App Features**
+- 🎨 **Modern UI** with green gradient theme
+- 📊 **Interactive prediction** with real-time results
+- 📱 **Responsive design** for all devices
+- 🔄 **Real-time updates** with cache busting
+- 📈 **Visual feedback** with animations
+
+### **Web App Screenshots**
+- Beautiful gradient interface
+- Interactive form with all personality indicators
+- Real-time prediction results
+- Mobile-responsive design
+
+---
+
 ## Overview
 
 The model uses advanced feature engineering, ensemble learning, and hyperparameter optimization to achieve high accuracy in personality prediction. It's designed for the Kaggle Playground Series competition focused on personality classification.
@@ -39,6 +76,10 @@ The model uses advanced feature engineering, ensemble learning, and hyperparamet
 - `personality_prediction_model.py`: Basic model implementation
 - `optimized_model.py`: Advanced model with hyperparameter tuning
 - `run_model.py`: Simple script to run the model
+- `app.py`: Flask web server for the frontend
+- `index.html`: Web application interface
+- `styles.css`: Modern styling with animations
+- `script.js`: Interactive prediction logic
 - `requirements.txt`: Required Python packages
 - `README.md`: This documentation
 
@@ -55,7 +96,13 @@ The model uses advanced feature engineering, ensemble learning, and hyperparamet
 
 ## Usage
 
-### Quick Start
+### 🌐 **Web Application (Recommended)**
+```bash
+python app.py
+```
+Then open: **http://localhost:5000**
+
+### Quick Start (Command Line)
 ```bash
 python run_model.py
 ```
