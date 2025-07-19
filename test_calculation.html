@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Prediction Test</title>
+</head>
+<body>
+    <h1>Prediction Calculation Test</h1>
+    <div id="result"></div>
+    
+    <script>
+        // Test with the exact values from the screenshot
+        const testData = {
+            timeAlone: 10,
+            stageFear: 'No',
+            socialEvents: 5,
+            goingOutside: 2,
+            drainedAfterSocializing: 'No',
+            friendsCircle: 1,
+            postFrequency: 3  // Assuming this value
+        };
+        
+        // Convert to features
+        const features = {
+            'Time_spent_Alone': parseFloat(testData.timeAlone),
+            'Stage_fear': testData.stageFear === 'Yes' ? 1 : 0,
+            'Social_event_attendance': parseInt(testData.socialEvents),
+            'Going_outside': parseInt(testData.goingOutside),
+            'Drained_after_socializing': testData.drainedAfterSocializing === 'Yes' ? 1 : 0,
+            'Friends_circle_size': parseInt(testData.friendsCircle),
+            'Post_frequency': parseInt(testData.postFrequency)
+        };
+        
+        console.log('Test features:', features);
+        
+        // Calculate scores
+        const introversionScore = features['Time_spent_Alone'] * 0.3 + features['Stage_fear'] * 1.5 + features['Drained_after_socializing'] * 1.5 - features['Social_event_attendance'] * 0.2;
+        const extroversionScore = features['Social_event_attendance'] * 0.3 + features['Going_outside'] * 0.3 + features['Post_frequency'] * 0.2 + features['Friends_circle_size'] * 0.2 - features['Time_spent_Alone'] * 0.1;
+        
+        console.log('Scores:', { introversionScore, extroversionScore });
+        
+        // Calculate indicators
+        const introversionIndicators = [
+            features['Time_spent_Alone'] > 8,
+            features['Stage_fear'] === 1,
+            features['Drained_after_socializing'] === 1,
+            features['Social_event_attendance'] < 2,
+            features['Going_outside'] <= 2,
+            features['Friends_circle_size'] <= 2,
+            features['Post_frequency'] < 3
+        ];
+        
+        const extroversionIndicators = [
+            features['Time_spent_Alone'] < 4,
+            features['Stage_fear'] === 0,
+            features['Drained_after_socializing'] === 0,
+            features['Social_event_attendance'] > 4,
+            features['Going_outside'] >= 3,
+            features['Friends_circle_size'] >= 3,
+            features['Post_frequency'] > 5
+        ];
+        
+        const introversionScore_count = introversionIndicators.filter(Boolean).length;
+        const extroversionScore_count = extroversionIndicators.filter(Boolean).length;
+        
+        console.log('Indicator counts:', { introversionScore_count, extroversionScore_count });
+        console.log('Introversion indicators:', introversionIndicators);
+        console.log('Extroversion indicators:', extroversionIndicators);
+        
+        // Determine prediction
+        let personalityType;
+        if (introversionScore > extroversionScore || introversionScore_count > extroversionScore_count) {
+            personalityType = 'Introvert';
+        } else {
+            personalityType = 'Extrovert';
+        }
+        
+        document.getElementById('result').innerHTML = `
+            <h2>Test Results:</h2>
+            <p><strong>Features:</strong> ${JSON.stringify(features, null, 2)}</p>
+            <p><strong>Introversion Score:</strong> ${introversionScore}</p>
+            <p><strong>Extroversion Score:</strong> ${extroversionScore}</p>
+            <p><strong>Introversion Indicators:</strong> ${introversionScore_count}</p>
+            <p><strong>Extroversion Indicators:</strong> ${extroversionScore_count}</p>
+            <p><strong>Prediction:</strong> ${personalityType}</p>
+        `;
+    </script>
+</body>
+</html> 

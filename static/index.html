@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Personality Analyzer - Discover Your Social Type</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="styles.css?v=2" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="header-content">
+                <h1><i class="fas fa-brain"></i> AI Personality Analyzer</h1>
+                <p>Discover your social personality type with advanced AI analysis</p>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <div class="prediction-form">
+                <h2>Discover Your Social Personality</h2>
+                <p class="form-description">Answer these questions about your social behavior to reveal whether you're an Introvert or Extrovert.</p>
+                
+                <form id="personalityForm">
+                    <div class="form-group">
+                        <label for="timeAlone">Time spent alone (hours per day):</label>
+                        <input type="number" id="timeAlone" name="timeAlone" min="0" max="24" step="0.5" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="stageFear">Do you experience stage fear?</label>
+                        <select id="stageFear" name="stageFear" required>
+                            <option value="">Select an option</option>
+                            <option value="Yes">Yes</option>
+                            <option value="No">No</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="socialEvents">Social event attendance (times per month):</label>
+                        <input type="number" id="socialEvents" name="socialEvents" min="0" max="50" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="goingOutside">How often do you go outside?</label>
+                        <select id="goingOutside" name="goingOutside" required>
+                            <option value="">Select frequency</option>
+                            <option value="1">Rarely (1-2 times/week)</option>
+                            <option value="2">Sometimes (3-4 times/week)</option>
+                            <option value="3">Often (5-6 times/week)</option>
+                            <option value="4">Very often (daily)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="drainedAfterSocializing">Do you feel drained after socializing?</label>
+                        <select id="drainedAfterSocializing" name="drainedAfterSocializing" required>
+                            <option value="">Select an option</option>
+                            <option value="Yes">Yes</option>
+                            <option value="No">No</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="friendsCircle">Size of your friends circle:</label>
+                        <select id="friendsCircle" name="friendsCircle" required>
+                            <option value="">Select size</option>
+                            <option value="1">Small (1-5 friends)</option>
+                            <option value="2">Medium (6-15 friends)</option>
+                            <option value="3">Large (16-30 friends)</option>
+                            <option value="4">Very large (30+ friends)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="postFrequency">Social media post frequency (posts per week):</label>
+                        <input type="number" id="postFrequency" name="postFrequency" min="0" max="50" required>
+                    </div>
+
+                    <button type="submit" class="predict-btn">
+                        <i class="fas fa-magic"></i> Predict Personality
+                    </button>
+                </form>
+            </div>
+
+            <div class="results-section" id="resultsSection" style="display: none;">
+                <div class="result-card">
+                    <div class="result-header">
+                        <h3>Prediction Result</h3>
+                        <div class="personality-badge" id="personalityBadge">
+                            <i class="fas fa-user"></i>
+                            <span id="personalityType"></span>
+                        </div>
+                    </div>
+                    
+                    <div class="confidence-meter">
+                        <label>Confidence Level:</label>
+                        <div class="meter">
+                            <div class="meter-fill" id="confidenceFill"></div>
+                        </div>
+                        <span id="confidenceText">0%</span>
+                    </div>
+
+                    <div class="traits-section">
+                        <h4>Key Traits:</h4>
+                        <div class="traits-grid" id="traitsGrid">
+                            <!-- Traits will be populated by JavaScript -->
+                        </div>
+                    </div>
+
+                    <div class="explanation">
+                        <h4>What this means:</h4>
+                        <p id="explanationText"></p>
+                    </div>
+
+                    <button class="new-prediction-btn" onclick="resetForm()">
+                        <i class="fas fa-redo"></i> New Prediction
+                    </button>
+                </div>
+            </div>
+
+            <div class="model-info">
+                <h3><i class="fas fa-chart-line"></i> Model Performance</h3>
+                <div class="performance-grid">
+                    <div class="performance-card">
+                        <h4>Accuracy</h4>
+                        <div class="performance-value">97.14%</div>
+                        <p>Cross-validation accuracy</p>
+                    </div>
+                    <div class="performance-card">
+                        <h4>Models Used</h4>
+                        <div class="performance-value">6</div>
+                        <p>Ensemble of ML models</p>
+                    </div>
+                    <div class="performance-card">
+                        <h4>Features</h4>
+                        <div class="performance-value">10</div>
+                        <p>Optimized feature set</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <p>&copy; 2024 AI Personality Analyzer. Powered by advanced machine learning.</p>
+        </footer>
+    </div>
+
+    <script src="script.js?v=2"></script>
+</body>
+</html> 
