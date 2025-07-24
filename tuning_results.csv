@@ -1,0 +1,2 @@
+XGBoost_best_params,XGBoost_best_score,LightGBM_best_params,LightGBM_best_score,RandomForest_best_params,RandomForest_best_score
+"{'n_estimators': 232, 'max_depth': 3, 'learning_rate': 0.011466822576760224, 'subsample': 0.837246694056101, 'colsample_bytree': 0.9864784965006463}",0.9681489065383099,"{'subsample': 1.0, 'n_estimators': 300, 'max_depth': 4, 'learning_rate': 0.01, 'colsample_bytree': 0.8}",0.9681489202002624,"{'n_estimators': 300, 'min_samples_split': 10, 'min_samples_leaf': 4, 'max_depth': 12}",0.9680814028311392
